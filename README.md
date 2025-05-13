@@ -77,3 +77,8 @@ repository_name/
 ## Git Usage  
 
 To learn more about how Niji utilizes GitLab, refer to the `Git@Niji.pdf` file located in the `docs/` folder of this project. For additional details, you can also consult the linked [article](https://medium.com/@adrien.riaux/mastering-git-documentation-and-usage-8057063608c7) for further insights.
+
+## To do:
+- Update poetry.lock/toml
+- Update CI/CD with niji bot
+- update readme with niji bot
