@@ -1,0 +1,45 @@
+image: alpine:latest
+
+variables:
+  GIT_USER_EMAIL: gitlab-wiki-ci-bot@equancy.com # create a bot user in your GitLab instance
+  GIT_USER_NAME: Wiki Bot
+  GITLAB_TOKEN: $CI_WIKI_TOKEN
+  
+before_script:
+  - apk add --no-cache git rsync
+  - git config --global user.email "$GIT_USER_EMAIL"
+  - git config --global user.name "$GIT_USER_NAME"
+
+stages:
+  - deploy
+
+deploy_wiki:
+  stage: deploy
+  script:
+  - |
+    # Set repository and wiki HTTPS URLs
+    REPO_URL="https://gitlab-ci-token:${GITLAB_TOKEN}@git.equancy.cloud/${CI_PROJECT_PATH}.git"
+    WIKI_URL="https://gitlab-ci-token:${GITLAB_TOKEN}@git.equancy.cloud/${CI_PROJECT_PATH}.wiki.git"
+
+    # Clone repositories
+    git clone "$REPO_URL" --depth=1 repo
+    git clone "$WIKI_URL" wiki
+
+    # Sync docs to wiki
+    rsync -av --delete --exclude=".git/" --exclude=".gitlab/" "repo/docs/" "wiki/"
+    cd wiki
+
+    # Commit and push changes
+    STATUS=$(git status --porcelain)
+    if [ -n "$STATUS" ]; then
+      git add .
+      git commit -m "docs: update wiki from docs (CI)"
+      git push origin main
+      echo "Wiki updated successfully.";
+    else
+      echo "No changes to the wiki.";
+    fi
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
+    - when: never

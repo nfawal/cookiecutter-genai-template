@@ -1,10 +1,7 @@
 {
-    "project_name": "GenAI Agentic App",
-    "project_slug": "genai_agentic_app",
-    "description": "Projet IA générative avec agents",
-    "author_name": "Ton Nom",
-    "use_docker": ["yes", "no"],
-    "llm_provider": ["openai", "mistral", "llama-cpp", "huggingface"],
-    "include_ui": ["streamlit", "gradio", "none"]
-  }
-  
+    "project_name": "project_name",
+    "repository_name": "{{cookiecutter.project_name.lower().replace(' ', '-')}}",
+    "author_name": "Niji",
+    "description": "A short description of the project.",
+    "license": "Niji All Rights Reserved"
+}
