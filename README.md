@@ -1,4 +1,4 @@
-# Data Science Cookiecutter
+# Gen AI Cookiecutter
 
 **A general template for any data science project**. The template available on the `master` branch utilizes the Poetry project management tool. Once the project is generated, it is highly recommended to thoroughly review the README file for detailed instructions and guidelines.
 
@@ -15,7 +15,10 @@ pip install cookiecutter
 Copy following commands to create your project based on your need:
 
 ```sh
-cookiecutter https://git.equancy.cloud/equancy/data-intelligence/cookiecutter-data-science-project/
+cookiecutter https://github.com/nfawal/cookiecutter-genai-template
+or
+cookiecutter git@github.com:nfawal/cookiecutter-genai-template.git
+
 ```
 
 This template comes with configured Git hooks. Once you run the command above, Pre-commit will automatically be installed if necessary. Any commit afterward will trigger multiple checks (e.g., ruff, interrogate, etc.) related to your code.
@@ -26,6 +29,7 @@ This template comes with configured Git hooks. Once you run the command above, P
 
 ```
 repository_name/
+    ├── agents/                                       <---------- Directory to store agents Yaml files
     ├── data/                                       <---------- Directory to store data. It is gitignored!
     │    ├── processed/
     │    │
@@ -45,6 +49,8 @@ repository_name/
     ├── src/                                        <---------- Directory of main source python files.
     │
     ├── tests/                                      <---------- Directory of unit test.
+    │
+    ├── ui/                                      <---------- Directory to store UI related files (CLI, Gradio, Streamlit)
     │
     ├── .env                                        <---------- Environment variables, use `dotenv` to read them into python
     │                                                           files. It is gitignored!
@@ -70,4 +76,4 @@ repository_name/
 
 ## Git Usage  
 
-To learn more about how Equancy utilizes GitLab, refer to the `Git@Equancy.pdf` file located in the `docs/` folder of this project. For additional details, you can also consult the linked [article](https://medium.com/@adrien.riaux/mastering-git-documentation-and-usage-8057063608c7) for further insights.
+To learn more about how Niji utilizes GitLab, refer to the `Git@Niji.pdf` file located in the `docs/` folder of this project. For additional details, you can also consult the linked [article](https://medium.com/@adrien.riaux/mastering-git-documentation-and-usage-8057063608c7) for further insights.
