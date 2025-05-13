@@ -23,6 +23,8 @@ Explain the structure of your project. Highlight important directories and their
 
 ```
 {{cookiecutter.repository_name}}/
+    epository_name/
+    ├── agents/                                       <---------- Directory to store agents Yaml files
     ├── data/                                       <---------- Directory to store data. It is gitignored!
     │    ├── processed/
     │    │
@@ -42,6 +44,8 @@ Explain the structure of your project. Highlight important directories and their
     ├── src/                                        <---------- Directory of main source python files.
     │
     ├── tests/                                      <---------- Directory of unit test.
+    │
+    ├── ui/                                      <---------- Directory to store UI related files (CLI, Gradio, Streamlit)
     │
     ├── .env                                        <---------- Environment variables, use `dotenv` to read them into python
     │                                                           files. It is gitignored!
